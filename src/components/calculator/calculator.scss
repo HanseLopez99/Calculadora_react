@@ -35,6 +35,7 @@ body {
       color: white;
       font-size: 5vw;
       background-color: darkslategrey;
+      overflow-x: hidden;
 
       @include respond-to(phone_portrait) {
         font-size: 19vw;
