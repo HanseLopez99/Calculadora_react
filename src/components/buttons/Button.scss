@@ -1,0 +1,28 @@
+@import '/src/theme/_mixin.scss';
+
+body {
+  background: black;
+
+  button {
+    width: 100%;
+    height: 100%;
+    font-size: 1.7vw;
+    background-color: rgb(245, 232, 232);
+
+    @include respond-to(phone_portrait) {
+      font-size: 7vw;
+    }
+
+    @include respond-to(phone_landscape) {
+      font-size: 3vw;
+    }
+  }
+
+  .operator-button {
+    background-color: #e89c2a;
+  }
+
+  .functional-button {
+    background-color: #4585d4;
+  }
+}

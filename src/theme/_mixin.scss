@@ -1,0 +1,44 @@
+
+//Mixin QUERY MANAGER
+
+// 0-600px:          PHONE
+
+// 500-950px:        TABLET PORTRAIT
+
+// 950-1080px:       TABLET LANDCAPE
+
+// 1080-1800px       NORMAL STYLES APPLY DONT NEED MEDIA
+
+// 1920px            BIG SCREEN
+  
+$break-phone: 500px;
+$break-tablet-portrait: 950px;
+$break-tablet-landscape: 1080px;
+
+@mixin respond-to($media) {
+  @if $media == mini_phone {
+    @media only screen and (max-width: ($break-phone - 1)) {
+      @content;
+    }
+  } @else if $media == phone_portrait {
+    @media only screen and (max-width: ($break-tablet-portrait - 1)) {
+      @content;
+    }
+  } @else if $media == phone_landscape {
+    @media only screen and (max-width: $break-tablet-portrait) and (max-height: $break-phone) {
+      @content;
+    }
+  } @else if $media == tablet_portrait {
+    @media only screen and (min-width: $break-phone) and (max-width: ($break-tablet-portrait - 1)) and (min-height: $break-phone) {
+      @content;
+    }
+  } @else if $media == tablet_landscape {
+    @media only screen and (min-width: $break-tablet-portrait) and (max-width: ($break-tablet-landscape - 1)) {
+      @content;
+    }
+  } @else if $media == desktop {
+    @media only screen and (min-width: $break-tablet-landscape) {
+      @content;
+    }
+  }
+}
