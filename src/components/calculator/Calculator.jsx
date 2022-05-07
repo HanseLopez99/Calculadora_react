@@ -28,12 +28,10 @@ const Calculator = () => {
     if (waitingForSecondNumber) {
       setDisplay(entry)
       setWaitingForSecondNumber(false)
+    } else if (display === '0') {
+      setDisplay(entry)
     } else {
-      if (display === '0') {
-        setDisplay(entry)
-      } else {
-        setDisplay(display + entry)
-      }
+      setDisplay(display + entry)
     }
   }
 
@@ -43,7 +41,7 @@ const Calculator = () => {
         setDisplay(display * -1)
       } else if (entry === '.') {
         if (!display.includes('.')) {
-          setDisplay(display + '.')
+          setDisplay(`${display}.`)
         }
       } else if (entry === '%') {
         setDisplay(display / 100)
@@ -98,33 +96,33 @@ const Calculator = () => {
         <div className="input-keys">
           <div className="function-keys">
             <div className="input-keys-row">
-              <Button contentText='AC' setValue={handleClear} isFunctionalButton />
-              <Button contentText='±' setValue={() => handleSign('±')} isFunctionalButton />
-              <Button contentText='%' setValue={() => handleSign('%')} isFunctionalButton />
-              <Button contentText='÷' setValue={() => handleOperator('/')} isOperatorButton />
+              <Button contentText="AC" setValue={handleClear} isFunctionalButton />
+              <Button contentText="±" setValue={() => handleSign('±')} isFunctionalButton />
+              <Button contentText="%" setValue={() => handleSign('%')} isFunctionalButton />
+              <Button contentText="÷" setValue={() => handleOperator('/')} isOperatorButton />
             </div>
             <div className="input-keys-row">
-              <Button contentText='7' setValue={() => handleEntry('7')} />
-              <Button contentText='8' setValue={() => handleEntry('8')} />
-              <Button contentText='9' setValue={() => handleEntry('9')} />
-              <Button contentText='x' setValue={() => handleOperator('*')} isOperatorButton />
+              <Button contentText="7" setValue={() => handleEntry('7')} />
+              <Button contentText="8" setValue={() => handleEntry('8')} />
+              <Button contentText="9" setValue={() => handleEntry('9')} />
+              <Button contentText="x" setValue={() => handleOperator('*')} isOperatorButton />
             </div>
             <div className="input-keys-row">
-              <Button contentText='4' setValue={() => handleEntry('4')} />
-              <Button contentText='5' setValue={() => handleEntry('5')} />
-              <Button contentText='6' setValue={() => handleEntry('6')} />
-              <Button contentText='-' setValue={() => handleOperator('-')} isOperatorButton />
+              <Button contentText="4" setValue={() => handleEntry('4')} />
+              <Button contentText="5" setValue={() => handleEntry('5')} />
+              <Button contentText="6" setValue={() => handleEntry('6')} />
+              <Button contentText="-" setValue={() => handleOperator('-')} isOperatorButton />
             </div>
             <div className="input-keys-row">
-              <Button contentText='1' setValue={() => handleEntry('1')} />
-              <Button contentText='2' setValue={() => handleEntry('2')} />
-              <Button contentText='3' setValue={() => handleEntry('3')} />
-              <Button contentText='+' setValue={() => handleOperator('+')} isOperatorButton />
+              <Button contentText="1" setValue={() => handleEntry('1')} />
+              <Button contentText="2" setValue={() => handleEntry('2')} />
+              <Button contentText="3" setValue={() => handleEntry('3')} />
+              <Button contentText="+" setValue={() => handleOperator('+')} isOperatorButton />
             </div>
             <div className="input-keys-row">
-              <Button contentText='0' setValue={() => handleEntry('0')} />
-              <Button contentText='.' setValue={() => handleSign('.')} />
-              <Button contentText='=' setValue={showResult} isOperatorButton />
+              <Button contentText="0" setValue={() => handleEntry('0')} />
+              <Button contentText="." setValue={() => handleSign('.')} />
+              <Button contentText="=" setValue={showResult} isOperatorButton />
             </div>
           </div>
         </div>
