@@ -1,22 +1,22 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
-  entry: "./src/index.jsx",
+  entry: './src/index.jsx',
   plugins: [
     new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin({ filename: "main.[fullhash].bundle.css" }),
+    new MiniCssExtractPlugin({ filename: 'main.[fullhash].bundle.css' }),
     new HtmlWebpackPlugin({
       title: 'Card Memory Game',
-      template: './src/index.html'
+      template: './src/index.html',
     }),
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.[fullhash].bundle.js',
-    clean: true
+    clean: true,
   },
   mode: 'development',
   module: {
@@ -29,29 +29,30 @@ module.exports = {
           //   loader: 'style-loader'
           // },
           {
-            loader: 'css-loader'
+            loader: 'css-loader',
           },
           {
             loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                plugins: function () {
+                plugins() {
                   return [
-                    require('autoprefixer')
-                  ];
-                }
-              }
-            }
+                    // eslint-disable-next-line global-require
+                    require('autoprefixer'),
+                  ]
+                },
+              },
+            },
           },
           {
-            loader: 'sass-loader'
-          }
-        ]
+            loader: 'sass-loader',
+          },
+        ],
       },
       {
         test: /\.(jsx?)$/,
         exclude: /node_modules/,
-        use: "babel-loader"
+        use: 'babel-loader',
       },
       {
         test: /\.(jpe?g|jpg|png|gif|woff|woff2|eot|ttf|pdf|svg|mp4)(\?[a-z0-9=.]+)?$/,
@@ -63,7 +64,7 @@ module.exports = {
       },
       {
         test: /\.html$/i,
-        loader: "html-loader",
+        loader: 'html-loader',
       },
       {
         test: /\.mp3$/i,
@@ -71,7 +72,7 @@ module.exports = {
         options: {
           outputPath: 'Assets/Sounds',
         },
-      }
+      },
     ],
   },
   resolve: {
@@ -85,4 +86,4 @@ module.exports = {
     compress: true,
     port: 9000,
   },
-};
+}
