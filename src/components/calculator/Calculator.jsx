@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from '../buttons/Button'
-import './Calculator.scss'
+import './calculator.scss'
 
 const Calculator = () => {
   const [display, setDisplay] = React.useState('0')
